@@ -8,6 +8,8 @@ class Loja{
         int x,y;
     public:
         Loja();
+        Loja(int id, int capacidade, int x, int y);
+
         int GetId();
         void SetId(int id);
         int GetCapacidade();

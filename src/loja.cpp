@@ -4,6 +4,13 @@ Loja::Loja(){
 
 }
 
+Loja::Loja(int id, int capacidade, int x, int y){
+    this-> id = id;
+    this-> capacidade = capacidade;
+    this-> x = x;
+    this-> y = y;
+}
+
 int Loja::GetId(){
     return this->id;
 }

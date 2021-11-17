@@ -4,6 +4,16 @@ Cliente::Cliente(){
 
 }
 
+Cliente::Cliente(int id, std::string estado,std::string,int pagamento,int idade, int x,int y,int score){
+    this->id = id;
+    this->estado = estado;
+    this->pagamento = pagamento;
+    this->idade = idade;
+    this->x = x;
+    this->y = y;
+    this->score = score;
+}
+
 int Cliente::GetId(){
     return this->id;
 }
@@ -21,7 +31,7 @@ void Cliente::SetEstado(std::string estado){
 std::string Cliente::GetPagamento(){
     return this->pagamento;
 }
-void Cliente::SetPagamento(std::string pagaemento){
+void Cliente::SetPagamento(std::string pagamento){
     this->pagamento = pagamento;
 }
 
