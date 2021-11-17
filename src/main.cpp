@@ -5,6 +5,7 @@
 
 
 int main(){
+  /* TESTE FILA ENCADEADA
   FilaEncadeada F;
   TipoItem X;
   
@@ -17,6 +18,7 @@ int main(){
         X=F.Desenfileira();
         X.Imprime();
   }
+  */
   std::cout<<"\noi\n";
 
   return 0;
