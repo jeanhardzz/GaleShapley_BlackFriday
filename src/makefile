@@ -11,10 +11,10 @@
 # e eh chamada atraves do comando $(VAR)
 
 CC=g++ # compilador, troque para gcc se preferir utilizar C
-TARGET= main.cpp
+TARGET= fila/tipoitem.cpp fila/tipocelula.cpp fila/fila_encadeada.cpp main.cpp
 CFLAGS=-Wall -Wextra # compiler flags, troque o que quiser, exceto bibliotecas externas
-EXEC=./main # nome do executavel que sera gerado, nao troque
-TMPOUT=main.testresult
+EXEC=./tp1 # nome do executavel que sera gerado, nao troque
+TMPOUT=tp1.testresult
 
 # detect if running under unix by finding 'rm' in $PATH :
 ifeq ($(wildcard $(addsuffix /rm,$(subst :, ,$(PATH)))),)
