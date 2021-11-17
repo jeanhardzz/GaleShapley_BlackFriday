@@ -8,6 +8,7 @@
 #include <vector>
 #include <iostream>
 #include <sstream>
+#include <string>
 
 class SistemaPref{
     private:
@@ -22,6 +23,7 @@ class SistemaPref{
         SistemaPref();
         void Leitura();
         void ImprimeLojas();
+        void ImprimeClientes();
         
 };
 

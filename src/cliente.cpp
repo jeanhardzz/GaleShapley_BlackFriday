@@ -4,14 +4,14 @@ Cliente::Cliente(){
 
 }
 
-Cliente::Cliente(int id, std::string estado,std::string,int pagamento,int idade, int x,int y,int score){
+Cliente::Cliente(int id, std::string estado,std::string pagamento,int idade, int x,int y){
     this->id = id;
     this->estado = estado;
     this->pagamento = pagamento;
     this->idade = idade;
     this->x = x;
-    this->y = y;
-    this->score = score;
+    this->y = y;  
+    this->score = 0;  
 }
 
 int Cliente::GetId(){

@@ -9,6 +9,7 @@ int main(){
   SistemaPref sistema;
   sistema.Leitura();
   sistema.ImprimeLojas();
+  sistema.ImprimeClientes();
 
 
   /* TESTE FILA ENCADEADA

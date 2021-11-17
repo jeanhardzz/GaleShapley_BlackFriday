@@ -14,7 +14,7 @@ class Cliente{
 
     public:
         Cliente();
-        Cliente(int id, std::string estado,std::string,int pagamento,int idade, int x,int y,int score);
+        Cliente(int id, std::string estado,std::string pagamento,int idade, int x,int y);
 
         int GetId();
         void SetId(int id);
