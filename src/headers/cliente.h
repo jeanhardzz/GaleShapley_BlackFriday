@@ -10,7 +10,7 @@ class Cliente{
         std::string pagamento;
         int idade;
         int x,y;
-        int score;
+        float ticket;
 
     public:
         Cliente();
@@ -34,8 +34,12 @@ class Cliente{
         int GetY();
         void SetY(int y);
 
-        int GetScore();
-        void SetScore(int score);
+        float GetTicket();
+        void SetTicket(float ticket);
+
+        void CalculaTicket();
+
+        int CalculaDistancia(int a, int b);
 
 };
 

@@ -8,8 +8,11 @@
 int main(){
   SistemaPref sistema;
   sistema.Leitura();
-  sistema.ImprimeLojas();
+  sistema.CalculaTicket();  
+  sistema.ImprimeLojas();  
   sistema.ImprimeClientes();
+  sistema.OrdenaPrefLojas();
+  sistema.OrdernaPrefClientes();
 
 
   /* TESTE FILA ENCADEADA
@@ -26,8 +29,6 @@ int main(){
         X.Imprime();
   }
   */
-
-  std::cout<<"\noi\n";
 
   return 0;
 }

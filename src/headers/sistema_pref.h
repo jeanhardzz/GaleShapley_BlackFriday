@@ -14,16 +14,20 @@ class SistemaPref{
     private:
         int n_lojas;
         std::map<int,Loja> lojas; // id da loja e a loja
-        std::map<int,FilaEncadeada> pref_lojas;//id loja e sua lista pref
+        FilaEncadeada pref_lojas;//todas as lojas tem a mesma lista de pref
         int n_clientes;
         std::map<int,Cliente> clientes; // id do cliente e o cliente
-        std::map<int,FilaEncadeada> pref_clientes;// id cliente e sua lista pref
+        std::map<int,std::map<int,int>> pref_clientes;// colcoca id cliente e sai sua lista pref de lojas
         
     public:
         SistemaPref();
+        ~SistemaPref();
         void Leitura();
         void ImprimeLojas();
         void ImprimeClientes();
+        void CalculaTicket();
+        void OrdenaPrefLojas();
+        void OrdernaPrefClientes();
         
 };
 

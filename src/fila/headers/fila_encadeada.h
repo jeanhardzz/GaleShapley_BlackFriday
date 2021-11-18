@@ -3,14 +3,16 @@
 
 #include "fila.h"
 #include "tipocelula.h"
+#include <iostream>
 
 class FilaEncadeada : public Fila{
     public:
         FilaEncadeada();
         virtual ~FilaEncadeada();
-        void Enfileira(TipoItem item);
-        TipoItem Desenfileira();
+        void Enfileira(Cliente cliente);
+        Cliente Desenfileira();
         void Limpa();
+        void Imprimir();
     private:
         TipoCelula* frente;
         TipoCelula* tras;

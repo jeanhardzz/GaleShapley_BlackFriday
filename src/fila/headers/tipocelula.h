@@ -1,12 +1,12 @@
 #ifndef TIPOCELULA
 #define TIPOCELULA
 
-#include "tipoitem.h"
+#include "../../headers/cliente.h"
 class TipoCelula{
     public:
         TipoCelula();
     private:
-        TipoItem item;
+        Cliente cliente;
         TipoCelula *prox;
     
     friend class FilaEncadeada;
