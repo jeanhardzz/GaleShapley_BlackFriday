@@ -38,3 +38,13 @@ int Loja::GetY(){
 void Loja::SetY(int y){
     this->y = y;
 }
+
+void Loja::OcupaVaga(){
+    capacidade = capacidade - 1;
+
+}
+
+void Loja::LiberaVaga(){
+    capacidade = capacidade + 1;
+
+}

@@ -19,6 +19,9 @@ class Loja{
         int GetY();
         void SetY(int y);
 
+        void OcupaVaga();
+        void LiberaVaga();
+
 };
 
 #endif

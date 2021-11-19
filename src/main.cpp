@@ -3,16 +3,42 @@
 #include "fila/headers/tipoitem.h"
 #include "fila/headers/fila_encadeada.h"
 #include "headers/sistema_pref.h"
+#include "headers/matching.h"
 
 
 int main(){
-  SistemaPref sistema;
+  SistemaPref sistema;  
+
   sistema.Leitura();
   sistema.CalculaTicket();  
-  sistema.ImprimeLojas();  
-  sistema.ImprimeClientes();
   sistema.OrdenaPrefLojas();
   sistema.OrdernaPrefClientes();
+  //sistema.ImprimeLojas();  
+  //sistema.ImprimeClientes();
+
+  Matching match(sistema.Getlojas(),sistema.GetPrefLojas(),sistema.GetPrefClientes());
+  //match.Imprime();
+  match.GaleShapley();
+
+
+
+
+
+
+
+
+
+
+
+  /*
+  std::vector<Cliente> pref;
+  pref = sistema.GetPrefLojas();
+  std::vector<Cliente>::iterator iter = pref.begin();
+  for (; iter != pref.end(); iter++)
+    {
+        std::cout <<iter->GetId()<<" |";
+    }
+  */
 
 
   /* TESTE FILA ENCADEADA

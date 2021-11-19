@@ -13,8 +13,8 @@
 class SistemaPref{
     private:
         int n_lojas;
-        std::map<int,Loja> lojas; // id da loja e a loja
-        FilaEncadeada pref_lojas;//todas as lojas tem a mesma lista de pref
+        std::map<int,Loja> lojas; // id da loja e a loja        
+        std::vector<Cliente> pref_lojas_vetor;
         int n_clientes;
         std::map<int,Cliente> clientes; // id do cliente e o cliente
         std::map<int,std::map<int,int>> pref_clientes;// colcoca id cliente e sai sua lista pref de lojas
@@ -28,6 +28,12 @@ class SistemaPref{
         void CalculaTicket();
         void OrdenaPrefLojas();
         void OrdernaPrefClientes();
+
+        std::vector<Cliente> GetPrefLojas();
+        std::map<int,std::map<int,int>> GetPrefClientes();
+        std::map<int,Loja> Getlojas();
+
+
         
 };
 

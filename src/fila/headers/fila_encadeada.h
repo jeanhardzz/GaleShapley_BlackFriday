@@ -9,8 +9,8 @@ class FilaEncadeada : public Fila{
     public:
         FilaEncadeada();
         virtual ~FilaEncadeada();
-        void Enfileira(Cliente cliente);
-        Cliente Desenfileira();
+        void Enfileira(Loja loja);
+        Loja Desenfileira();
         void Limpa();
         void Imprimir();
     private:

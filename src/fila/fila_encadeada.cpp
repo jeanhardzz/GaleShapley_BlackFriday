@@ -11,21 +11,21 @@ FilaEncadeada::~FilaEncadeada(){
     delete frente;
 }
 
-void FilaEncadeada::Enfileira(Cliente cliente) {
+void FilaEncadeada::Enfileira(Loja loja) {
     TipoCelula *nova;
     nova = new TipoCelula();
-    nova->cliente = cliente;
+    nova->loja = loja;
     tras->prox = nova;
     tras = nova;
     tamanho++;
 }
 
-Cliente FilaEncadeada::Desenfileira() {
+Loja FilaEncadeada::Desenfileira() {
     TipoCelula *p;
-    Cliente aux;
+    Loja aux;
     if (tamanho == 0)
         throw "Fila está vazia!";
-    aux = frente->prox->cliente;
+    aux = frente->prox->loja;
     p = frente;
     frente = frente->prox;
     delete p;
@@ -46,10 +46,12 @@ void FilaEncadeada::Limpa(){
 }
 
 void FilaEncadeada::Imprimir(){
-    Cliente c;
+    Loja c;
+    //std::cout<<"\nTamanho da FILA: " << this->tamanho<<"\n";
     for(int i=0;i<tamanho;i++){
         c = Desenfileira();
-        std::cout<<c.GetId()<<" : "<<c.GetTicket() << " | ";
+        std::cout<<c.GetId()<< " | ";
         Enfileira(c);
     }
+    //std::cout<<"\nTamanho da FILA: " << this->tamanho<<"\n";
 }

@@ -4,12 +4,11 @@ SistemaPref::SistemaPref(){
 
 }
 
-SistemaPref::~SistemaPref(){
-    pref_lojas.Limpa();
+SistemaPref::~SistemaPref(){    
 }
 
 void SistemaPref::Leitura(){
-    std::cout<<"leitura\n";        
+    //std::cout<<"leitura\n";        
 
     std::string linha;
     std::stringstream s1;              
@@ -28,7 +27,7 @@ void SistemaPref::Leitura(){
     s2 << linha;
     s2 >> n_lojas;
 
-    std::cout<<"\nlojas: "<<n_lojas;
+    //std::cout<<"\nlojas: "<<n_lojas;
 
     for(int i=0;i<n_lojas;i++){
         int cap, x, y;
@@ -127,12 +126,8 @@ void SistemaPref::OrdenaPrefLojas(){
     }
     */
 
-    for(i=0; i<n;i++){        
-        pref_lojas.Enfileira(v[i]);
-    }    
-
-    //Imprimir a fila
-    //pref_lojas.Imprimir();
+    this->pref_lojas_vetor = v;
+    
     
 }
 
@@ -191,5 +186,19 @@ void SistemaPref::OrdernaPrefClientes(){
         */
 
 
-    }
+    }    
+}
+
+std::vector<Cliente> SistemaPref::GetPrefLojas(){
+    //pref_lojas.Imprimir();
+    return this->pref_lojas_vetor;
+}
+
+std::map<int,std::map<int,int>> SistemaPref::GetPrefClientes(){
+    return this->pref_clientes;
+
+}
+
+std::map<int,Loja> SistemaPref::Getlojas(){
+    return this->lojas;
 }

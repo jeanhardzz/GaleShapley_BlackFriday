@@ -11,7 +11,7 @@
 # e eh chamada atraves do comando $(VAR)
 
 CC=g++ # compilador, troque para gcc se preferir utilizar C
-TARGET= sistema_pref.cpp cliente.cpp loja.cpp fila/tipoitem.cpp fila/tipocelula.cpp fila/fila_encadeada.cpp main.cpp
+TARGET= matching.cpp sistema_pref.cpp cliente.cpp loja.cpp fila/tipoitem.cpp fila/tipocelula.cpp fila/fila_encadeada.cpp main.cpp
 CFLAGS=-Wall -Wextra # compiler flags, troque o que quiser, exceto bibliotecas externas
 EXEC=./tp1 # nome do executavel que sera gerado, nao troque
 TMPOUT=tp1.testresult
