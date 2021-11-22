@@ -5,12 +5,6 @@ Matching::Matching(std::map<int,Loja> lojas, std::vector<Cliente> pref_lojas_vet
     this->pref_clientes = pref_clientes;
     this->lojas_map = lojas;
 
-    /*
-    for(unsigned int i=0; i<pref_lojas_vetor.size();i++){        
-        pref_lojas.Enfileira(pref_lojas_vetor[i]);
-    } 
-    */ 
-
     for(unsigned int i=0; i<lojas.size();i++){        
         this->lojas.Enfileira(lojas[i]);
     }   
@@ -31,12 +25,10 @@ void Matching::Imprime(){
         for (; iter != pref_lojas.end(); iter++){
             std::cout <<iter->GetId()<<" |";
         }
-
-    //pref_lojas.Imprimir();    
+    
 }
 
-void Matching::GaleShapley(){
-    //lojas.Imprimir();
+void Matching::GaleShapley(){    
 
     //Preencher os matching com valores iniciais.
     //preenche os cliente alocados com lojas
@@ -52,22 +44,6 @@ void Matching::GaleShapley(){
         lojas.Enfileira(aux);
     }
 
-    /*
-    //Conferindo se preenchi certo.
-    std::cout<<"PutCoutL \n";
-    for(unsigned int j=0; j<pref_lojas.size(); j++){
-        std::cout<<"Cliente "<<j<<" alocado com "<<putCoutL[j]<<"\n";
-    }       
-    std::cout<<"PutLoutC \n";
-    for(int i=0; i<lojas.GetTamanho(); i++){
-        std::cout<<"Loja "<<i<<" alocado com ";  
-        for(unsigned int j=0;j<putLoutC[i].size();j++){
-            std::cout<<putLoutC[i][j]<<" ";  
-        }        
-        std::cout<<"\n";  
-    }
-    */
-
     //Preenche matriz propos que guarda se hospital ja propos pra aquele cliente com 0.    
     std::vector<std::vector<std::pair<Cliente,int>>> propos(lojas.GetTamanho(),std::vector<std::pair<Cliente,int>>(pref_lojas.size()));
 
@@ -78,29 +54,18 @@ void Matching::GaleShapley(){
             propos[i][j] = p;
         }                              
     }
-
-    //std::cout<<"\nTeste tabela de proposicao em ordem de preferencia: "<<propos[0][0].first.GetId();
-    //std::cout<<"\nTeste tabela de proposicao em ordem de preferencia: "<<propos[0][0].second<<"\n";
     
-    //bool f = Condicao(propos);
-    //std::cout<<"A loja: "<<p_loja<<" esta propopondo para o cliente: "<<p_cliente<<"\n";
-    
-    
-    while(Condicao(propos)){
-        //std::cout<<"A loja: "<<p_loja<<" esta propopondo para o cliente: "<<p_cliente<<"\n";
+    while(Condicao(propos)){        
         if(putCoutL[p_cliente]<0){
-            putCoutL[p_cliente] = p_loja;
-            //std::cout<<"A loja: "<<putCoutL[p_cliente]<<" esta alocado para o cliente: "<<p_cliente<<"\n";
+            putCoutL[p_cliente] = p_loja;            
             for(unsigned int i=0;i<putLoutC[p_loja].size();i++){
                 if(putLoutC[p_loja][i]<0){
                     putLoutC[p_loja][i] = p_cliente;
-                    lojas_map[p_loja].OcupaVaga();
-                    //std::cout<<"O cliente: "<<putLoutC[p_loja][i]<<" esta alocado para a loja: "<<p_loja<<"\n";
+                    lojas_map[p_loja].OcupaVaga();                    
                     break;
                 }
             }
-        }else if( pref_clientes[p_cliente][p_loja] < pref_clientes[p_cliente][putCoutL[p_cliente]] ){
-            //std::cout<<"\n\noi\n\n";
+        }else if( pref_clientes[p_cliente][p_loja] < pref_clientes[p_cliente][putCoutL[p_cliente]] ){            
             for(unsigned int i=0;i<putLoutC[putCoutL[p_cliente]].size();i++){
                 if(putLoutC[putCoutL[p_cliente]][i]==p_cliente){
                     putLoutC[putCoutL[p_cliente]][i]= -1;
@@ -109,12 +74,10 @@ void Matching::GaleShapley(){
             }
             lojas_map[putCoutL[p_cliente]].LiberaVaga();
             putCoutL[p_cliente] = p_loja;
-            //std::cout<<"A loja: "<<putCoutL[p_cliente]<<" esta alocado para o cliente: "<<p_cliente<<"\n";
             for(unsigned int i=0;i<putLoutC[p_loja].size();i++){
                 if(putLoutC[p_loja][i]<0){
                     putLoutC[p_loja][i] = p_cliente;
-                    lojas_map[p_loja].OcupaVaga();
-                    //std::cout<<"O cliente: "<<putLoutC[p_loja][i]<<" esta alocado para a loja: "<<p_loja<<"\n";
+                    lojas_map[p_loja].OcupaVaga();                    
                     break;
                 }
             }
@@ -128,61 +91,6 @@ void Matching::GaleShapley(){
 
                 
     }
-    /*
-    p_loja = 1;
-    p_cliente = 156;
-    */
-   
-    
-    std::cout<<"\nPutLoutC \n";
-    for(int i=0; i<lojas.GetTamanho(); i++){
-        std::cout<<"Loja "<<i<<" alocado com ";  
-        for(unsigned int j=0;j<putLoutC[i].size();j++){
-            std::cout<<putLoutC[i][j]<<" ";  
-        }        
-        std::cout<<"\n";  
-    }
-    /*
-    //Conferindo se preenchi certo.
-    std::cout<<"\nPutCoutL \n";
-    for(unsigned int j=0; j<pref_lojas.size(); j++){
-        std::cout<<"Cliente "<<j<<" alocado com "<<putCoutL[j]<<"\n";
-    }       
-    
-    
-    std::cout<<"\nVagas \n";
-    for(unsigned int i=0; i<lojas_map.size();i++){                
-        std::cout<<"Loja: "<<i<<" Vagas: ";
-        std::cout<<lojas_map[i].GetCapacidade();        
-        std::cout<<"\n";        
-    }
-    
-    std::cout<<"\nPROPOSTAS\n";
-    for(int i=0; i<lojas.GetTamanho(); i++){
-        p_loja=i;
-        std::cout<<"\nPropostas da loja "<<p_loja<<"\n";
-        for(unsigned int j=0; j<propos[p_loja].size(); j++){
-            std::cout<<propos[p_loja][j].first.GetId()<<" - "<<propos[p_loja][j].second<<" | ";
-        
-        } 
-    }
-    
-    std::cout<<"\n";
-    */
-    
-    
-    /*
-    std::cout<<"\nTeste tabela de proposicao em ordem de preferencia: "<<propos[0][0].first.GetId();
-    std::cout<<"\nTeste tabela de proposicao em ordem de preferencia: "<<propos[0][0].second<<"\n"; 
-    std::cout<<"\nTeste tabela de proposicao em ordem de preferencia: "<<propos[0][1].first.GetId();
-    std::cout<<"\nTeste tabela de proposicao em ordem de preferencia: "<<propos[0][1].second<<"\n";
-    std::cout<<"\nTeste tabela de proposicao em ordem de preferencia: "<<propos[1][0].first.GetId();
-    std::cout<<"\nTeste tabela de proposicao em ordem de preferencia: "<<propos[1][0].second<<"\n"; 
-    std::cout<<"\nTeste tabela de proposicao em ordem de preferencia: "<<propos[1][1].first.GetId();
-    std::cout<<"\nTeste tabela de proposicao em ordem de preferencia: "<<propos[1][1].second<<"\n"; 
-    */    
-
-
 }
 
 bool Matching::Condicao(std::vector<std::vector<std::pair<Cliente,int>>> propos){
@@ -221,4 +129,37 @@ int Matching::ExistePropos(std::vector<std::vector<std::pair<Cliente,int>>> prop
         }
     }            
     return -1;
+}
+
+void Matching::ImprimirMatching(){
+    //criando rank clientes.        
+    std::map<int,int> rank;
+    for (unsigned int k=0; k<pref_lojas.size();k++) {
+        rank[pref_lojas[k].GetId()] = k;
+    }    
+
+
+    for(int k=0; k<lojas.GetTamanho(); k++){
+        int n = (int) putLoutC[k].size();
+        int aux,j;
+        for (int i=1; i<n;i++) {
+        aux = putLoutC[k][i];
+        j = i - 1;                
+
+        while (( j >= 0 ) && (rank[aux] < rank[putLoutC[k][j]])) {
+            putLoutC[k][j + 1] = putLoutC[k][j];
+            j--;
+        }
+        putLoutC[k][j + 1] = aux;
+        
+    }  
+    }
+    
+    for(int i=0; i<lojas.GetTamanho(); i++){
+        std::cout<<i<<"\n";  
+        for(unsigned int j=0;j<putLoutC[i].size();j++){
+            std::cout<<putLoutC[i][j]<<" ";  
+        }        
+        std::cout<<"\n";  
+    }
 }

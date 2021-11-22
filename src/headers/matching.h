@@ -29,6 +29,7 @@ class Matching{
         void GaleShapley();
         bool Condicao(std::vector<std::vector<std::pair<Cliente,int>>> propos);
         int ExistePropos(std::vector<std::vector<std::pair<Cliente,int>>> propos);
+        void ImprimirMatching();
 
 };
 

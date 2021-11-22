@@ -6,10 +6,10 @@ SistemaPref::SistemaPref(){
 
 SistemaPref::~SistemaPref(){    
 }
-
-void SistemaPref::Leitura(){
-    //std::cout<<"leitura\n";        
-
+/* Seja M número de lojas e N numero de clientes.
+* Leitura faz O(n.m)  
+*/
+void SistemaPref::Leitura(){         
     std::string linha;
     std::stringstream s1;              
     std::stringstream s2; 
@@ -25,9 +25,7 @@ void SistemaPref::Leitura(){
     //Lendo as LOJAS
     getline(std::cin, linha);
     s2 << linha;
-    s2 >> n_lojas;
-
-    //std::cout<<"\nlojas: "<<n_lojas;
+    s2 >> n_lojas;    
 
     for(int i=0;i<n_lojas;i++){
         int cap, x, y;
@@ -68,6 +66,9 @@ void SistemaPref::Leitura(){
     }
 }
 
+/* Seja M número de lojas e N numero de clientes.
+* Imprime faz O(m)  
+*/
 void SistemaPref::ImprimeLojas(){
     for(unsigned int i=0; i<lojas.size();i++){
         std::cout<<"\nLoja "<<lojas[i].GetId()<<std::endl;
@@ -76,6 +77,9 @@ void SistemaPref::ImprimeLojas(){
     }
 }
 
+/* Seja M número de lojas e N numero de clientes.
+* ImprimeClientes faz O(n)  
+*/
 void SistemaPref::ImprimeClientes(){
     std::cout << std::fixed;
     std::cout.precision(2);
@@ -89,12 +93,18 @@ void SistemaPref::ImprimeClientes(){
     }
 }
 
+/* Seja M número de lojas e N numero de clientes.
+* CalculaTicket faz O(n)  
+*/
 void SistemaPref::CalculaTicket(){
     for(unsigned int i=0; i<clientes.size();i++){
-        clientes[i].CalculaTicket();
-    }
+        clientes[i].CalculaTicket();        
+    }    
 }
 
+/* Seja M número de lojas e N numero de clientes.
+* OrdenaPrefLojas faz O(n²)  
+*/
 void SistemaPref::OrdenaPrefLojas(){
     
     std::vector<Cliente> v;
@@ -119,18 +129,12 @@ void SistemaPref::OrdenaPrefLojas(){
         
     }
 
-    /*
-    std::cout<<"fiz o v";
-    for (i=1; i<v.size();i++) {
-        std::cout<<v[i].GetId()<<" - ";
-    }
-    */
-
     this->pref_lojas_vetor = v;
-    
-    
 }
 
+/* Seja M número de lojas e N numero de clientes.
+* OrdenaPrefLojas faz O(n.m²)  
+*/
 void SistemaPref::OrdernaPrefClientes(){
     /*Fazer um vetor de pares para cada cliente de loja-distancia.
     *Depois ordernar esse map para saber as menores distancias.
@@ -149,9 +153,7 @@ void SistemaPref::OrdernaPrefClientes(){
             dist = clientes[i].CalculaDistancia(lojas[j].GetX(),lojas[j].GetY());
             std::pair<Loja,int> aux(lojas[j],dist);
             v.push_back(aux);
-        }
-        //std::cout<<"\nLoja: "<<v[0].first.GetId()<<" Distancia: "<<v[0].second;
-        
+        }                
         //Ordenando o vetor de lojas-distancia
         for (int k=1; k<m;k++) {
             paraux = v[k];
@@ -170,27 +172,11 @@ void SistemaPref::OrdernaPrefClientes(){
         for (int k=0; k<m;k++) {
             rank[v[k].first.GetId()] = k;
         }
-        pref_clientes[i] = rank;
-        
-        /*
-        //Imprimindo a ordenação
-        std::cout<<"\nCliente: "<<clientes[i].GetId()<<"\n";
-        for (int k=0; k<m;k++) {
-            std::cout<<"\nLoja: "<<v[k].first.GetId()<<" Distancia: "<<v[k].second;
-        }
-        std::cout<<"\n";
-        for (int k=0; k<m;k++) {
-            std::cout<<"\nLoja: "<<k<<" Posicao: "<<pref_clientes[i][k];
-        }
-        std::cout<<"\n\n";
-        */
-
-
+        pref_clientes[i] = rank;              
     }    
 }
 
-std::vector<Cliente> SistemaPref::GetPrefLojas(){
-    //pref_lojas.Imprimir();
+std::vector<Cliente> SistemaPref::GetPrefLojas(){    
     return this->pref_lojas_vetor;
 }
 
